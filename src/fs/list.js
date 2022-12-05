@@ -1,5 +1,14 @@
+import { readdir } from 'node:fs/promises';
+
 const list = async () => {
-    // Write your code here 
+    const errorText = 'FS operation failed';
+
+    try {
+        const files = await readdir('./src/fs/files/');
+        console.log(files);
+    } catch(error) {
+        throw new Error(errorText);
+    }
 };
 
 await list();
